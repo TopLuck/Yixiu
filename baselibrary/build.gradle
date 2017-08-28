@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+apply plugin: 'realm-android'
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 21
+
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                println('............................')
+                buildConfigField "boolean", "ENABLE_DEBUG", "false" //打包发布是改false
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt')
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+            debug {
+                buildConfigField "boolean", "ENABLE_DEBUG", "true"
+
+
+            }
+        }
+        sourceSets {
+            main {
+                manifest.srcFile 'AndroidManifest.xml'
+                java.srcDirs = ['src']
+                res.srcDirs = ['res']
+                jniLibs.srcDirs = ['libs']
+                assets.srcDirs = ['assets']
+            }
+        }
+        packagingOptions {
+            exclude 'META-INF/LICENSE.txt'
+            exclude 'META-INF/NOTICE.txt'
+            exclude 'META-INF/DEPENDENCIES.txt'
+        }
+    }
+
+    dependencies {
+        compile 'com.google.code.gson:gson:2.6.1'
+        compile 'com.squareup.okhttp3:okhttp:3.8.0'
+        compile 'com.squareup.retrofit2:retrofit:2.3.0'
+        compile 'com.squareup.picasso:picasso:2.5.2'
+        compile 'com.umeng.analytics:analytics:latest.integration'
+        final SUPPORT_VERSION = '23.0.0'
+        compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+        compile "com.android.support:support-v4:$SUPPORT_VERSION"
+        compile "com.android.support:design:$SUPPORT_VERSION"
+    }
+}
+
+dependencies {
+    compile 'io.realm:realm-android-library:3.5.0'
+}
