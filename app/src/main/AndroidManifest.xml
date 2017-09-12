@@ -149,7 +149,20 @@
                 <category android:name="com.yixiu.carrepair" />
             </intent-filter>
         </receiver>
-
+        <activity
+            android:name=".pay.WXPayActivity" android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="wx45e4ff75c8d888a0"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+        </activity>
     </application>
 
 </manifest>

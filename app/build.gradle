@@ -44,4 +44,6 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     compile project(path: ':baselibrary')
+
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }
